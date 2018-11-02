@@ -14,7 +14,7 @@ app.use(express.static(path.resolve(__dirname, '../static'))) // Static resource
 app.use(bodyParser.json({limit: '2048kb'})) // Request content is not not more than 2G
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
-  secret: 'dreamer_app',
+  secret: 'ww_server',
   cookie: {maxAge: 60 * 1000 * 30} // Overdue time
 }))
 app.use(Interceptor) // Router Interceptor

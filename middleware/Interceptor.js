@@ -9,6 +9,8 @@ function Interceptor (req, res, next) {
     console.log('**********************')
     console.log('                      ')
   }
+  // 对token的解析
+  
   // deal with req.path
   next()
 }

@@ -17,6 +17,11 @@ module.exports = function (sequelize, DataTypes) {
     _name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    _role: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0
     }
   }, {
     tableName: 'admin',
