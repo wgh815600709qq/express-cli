@@ -9,6 +9,7 @@ var bodyParser = require('body-parser') // Request header to parse middleware
 var clientErrorHandler = require('./middleware/clientErrorHandler.js')
 var errorHandler = require('./middleware/errorHandler.js')
 var Interceptor = require('./middleware/Interceptor.js')
+var createNewSocket = require('./utils/socket')
 app.set('port', port)
 app.use(express.static(path.resolve(__dirname, '../static'))) // Static resources
 app.use(bodyParser.json({limit: '2048kb'})) // Request content is not not more than 2G
@@ -23,10 +24,6 @@ app.use(Interceptor) // Router Interceptor
 */
 app.use('/admin', adminRouter)
 
-
-
-
-
 // At last solve 404
 app.use('*', function(req, res) {
   res.status(404).send({ error: 'Api Is Not Found!' })
@@ -39,3 +36,4 @@ app.listen(port, host)// Listen the server
 
 console.warn('Server Start on', new Date().toLocaleString())
 console.log('Server listening on ' + host + ':' + port)
+createNewSocket()

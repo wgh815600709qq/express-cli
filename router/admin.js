@@ -79,6 +79,7 @@ router.post('/edit/:id', async (req, res, next) => {
   }
 })
 
+// 登录之后要建立socket链接
 router.post('/login', async (req, res, next) => {
   try {
     var { password } = req.body

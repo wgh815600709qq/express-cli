@@ -118,7 +118,7 @@ async function applyFriend(data) {
       })
     })
   }).then(res => {
-    return { code: 'Y200' }
+    return { code: 'Y200', msg: 'OK'}
   }).catch(err => {
     return { code: 'Y500', err: err }
   })
