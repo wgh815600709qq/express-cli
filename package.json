@@ -13,7 +13,7 @@
     "dev": "cross-env NODE_ENV='dev' node-dev start.js"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "bcryptjs": "^2.4.3",
