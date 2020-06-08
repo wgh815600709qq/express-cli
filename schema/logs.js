@@ -1,10 +1,18 @@
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('PerformanceLogs', {
+    return sequelize.define('Logs', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
+      },
+      user_agent: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false      
       },
       type: {
         type: DataTypes.STRING,
@@ -14,16 +22,20 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      methods: {
+      random_string: {
         type: DataTypes.STRING,
         allowNull: false
       },
       url: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      sign: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     }, {
-      tableName: 'performance_logs',
+      tableName: 'logs',
       paranoid: true // Soft deletion
     })
   }

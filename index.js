@@ -1,5 +1,6 @@
 import express from 'express'
-import adminRouter from './router/admin'
+// import adminRouter from './router/admin'
+import logsRouter from './router/logs'
 const path = require('path')
 const session = require('express-session')
 const app = express()
@@ -15,14 +16,15 @@ app.use(express.static(path.resolve(__dirname, '../static'))) // Static resource
 app.use(bodyParser.json({limit: '2048kb'})) // Request content is not not more than 2G
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(session({
-  secret: 'ww_server',
+  secret: 'performance',
   cookie: {maxAge: 60 * 1000 * 30} // Overdue time
 }))
 app.use(Interceptor) // Router Interceptor
 /*
 *  Put routers in the block
 */
-app.use('/admin', adminRouter)
+// app.use('/admin', adminRouter)
+app.use('/logs', logsRouter)
 
 // At last solve 404
 app.use('*', function(req, res) {

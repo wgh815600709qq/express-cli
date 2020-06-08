@@ -2,12 +2,12 @@
  * @ Define Return Code Type
  */
 const success = {
-  code: 'Y200',
+  code: '200',
   msg: 'Success'
 }
 
 const fail = {
-  code: 'Y501',
+  code: '500',
   msg: 'Operation Failed'
 }
 
