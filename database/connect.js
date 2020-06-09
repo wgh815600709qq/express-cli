@@ -2,8 +2,7 @@
 * @Database Connection File
 */
 var Sequelize = require('sequelize')
-var isDev = process && process.env && process.env.npm_config_argv ? process.env.npm_config_argv.indexOf('dev') > -1 : false // 本地环境使用本地数据库
-var config = isDev ? require('./dev-db-config.js') : require('./db-config.js')
+var config =  require('./db-config.js')
 const connection = new Sequelize(config.database, config.user, config.password, {
   host: config.host,
   port: config.port,

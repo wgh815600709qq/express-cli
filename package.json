@@ -1,5 +1,5 @@
 {
-  "name": "dreamer-server",
+  "name": "express_server",
   "version": "1.0.0",
   "description": "a simple and fast nodejs server for web app",
   "author": "johnson",
@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV='dev' node-dev start.js"
+    "dev": "cross-env NODE_ENV='dev' nodemon start.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -44,5 +44,15 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgh815600709qq/express-cli.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wgh815600709qq/express-cli/issues"
+  },
+  "homepage": "https://github.com/wgh815600709qq/express-cli#readme"
 }

@@ -6,7 +6,21 @@ const path = require('path')
 const fs = require('fs')
 const publicKey = fs.readFileSync(path.join(__dirname, '../config/publicKey.pub'))
 var { success, fail } = require('../config/code-msg.js')
-var { queryAll, add, queryByOne, deleteByOne, editById, fuzzyMatching, applyFriend } = require('../module/logs.js')
+var { queryAll, add, queryByOne, deleteByOne, editById, 
+  analysisToData,
+  fuzzyMatching, applyFriend} = require('../module/logs.js')
+router.get('/analysis', async (req, res, next) => {
+  try {
+    let result = await analysisToData()
+    if (result) {
+      res.send(Object.assign(success, { data: result }))
+    } else {
+      res.send(Object.assign(fail, { data: null }))
+    }
+  } catch (err) {
+    next(err)
+  }
+})
 
 router.get('/queryAll', async (req, res, next) => {
   try {
@@ -29,6 +43,7 @@ router.post('/add', async (req, res, next) => {
     //   _name: req.body.name
     // }
     let data = req.body
+    console.log('data', data)
     let result = await add(data)
     if (result) {
       res.send(Object.assign(success, { data: result }))

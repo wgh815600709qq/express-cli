@@ -122,12 +122,44 @@ async function applyFriend(data) {
   })
 }
 
+async function analysisToData() {
+  let total = await Logs.findAll()
+  let result = {
+    xAxis: [],
+    series: []
+  }
+  // 总耗时
+  let updateBills = total.filter(it => it.type == 'bill_update')
+  // console.log(updateBills)
+  let len = updateBills.length
+  result.xAxis.push('总耗时')
+  result.series.push(updateBills[len-1].timestamp - total[0].timestamp)
+  // bill更新次数
+  result.xAxis.push('Bill更新次数')
+  result.series.push(len)
+  // 接口耗时
+  let fetchBegins = total.filter(it => it.type == 'fetch_begin')
+  let fetchFinishs = total.filter(it => it.type == 'fetch_finish')
+  for (var i = 0; i < fetchBegins.length; i ++) {
+    let it = fetchBegins[i]
+    let action = it.url.replace(/^[^?]+\?/g, '')
+    let startTime = it.timestamp
+    let endTime = fetchFinishs.find(its => its.url === it.url).timestamp
+    result.xAxis.push(`接口：${action}`)
+    result.series.push(endTime - startTime)
+    // console.log(result)
+  }
+  // console.log(result)
+  return result
+}
+
 export {
   queryAll,
   add,
   queryByOne,
   deleteByOne,
   editById,
+  analysisToData,
 //   fuzzyMatching,
 //   applyFriend
 }

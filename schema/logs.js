@@ -8,31 +8,31 @@ module.exports = function (sequelize, DataTypes) {
       },
       user_agent: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false      
+        allowNull: true      
       },
       type: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       timestamp: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       random_string: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       url: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       sign: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       }
     }, {
       tableName: 'logs',
